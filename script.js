@@ -95,25 +95,35 @@ function submitDate(event) {
   document.getElementById('receipt').innerHTML = receipt;
   nextPage('page4');
 
-  // -------------------- SEND EMAIL --------------------
-  emailjs.send("your_valentines_receipt", "val_receipt", {
-    to_name: "Adaleigh & Louis",
-    from_name: "Choi",
+  // -------------------- SEND EMAILS --------------------
+  const templateParams = {
+    your_name: "Choi",
+    date: valentinesDate,
     location: location,
     food: food,
     time: time,
-    date: valentinesDate,
-    receipt_number: receiptNum,
-    to_email: "costanilla.louis@gmail.com, alairadaleigh@gmail.com"
+    receipt_number: receiptNum
+  };
+
+  // Send to Adaleigh
+  emailjs.send("service_afa01as", "template_xcfdo8o", {
+    ...templateParams,
+    to_name: "Adaleigh",
+    to_email: "alairadaleigh@gmail.com"
   })
-  .then(() => {
-    alert("Receipt successfully sent to emails! 💌");
-    console.log("Email successfully sent!");
+  .then(() => console.log("Email sent to Adaleigh ✅"))
+  .catch(err => console.error("Failed to send email to Adaleigh:", err));
+
+  // Send to Louis
+  emailjs.send("service_afa01as", "template_xcfdo8o", {
+    ...templateParams,
+    to_name: "Louis",
+    to_email: "costanilla.louis@gmail.com"
   })
-  .catch((err) => {
-    alert("Failed to send email. 😢 Check console.");
-    console.error("Failed to send email:", err);
-  });
+  .then(() => console.log("Email sent to Louis ✅"))
+  .catch(err => console.error("Failed to send email to Louis:", err));
+
+  alert("Receipts are being sent! 💌 Check inboxes soon.");
 }
 
 // -------------------- FLOATING HEARTS --------------------
@@ -132,3 +142,4 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
+
