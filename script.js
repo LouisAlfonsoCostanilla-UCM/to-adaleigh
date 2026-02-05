@@ -68,7 +68,7 @@ function submitDate(event) {
       </div>
 
       <div class="receipt-line">
-        <span>💌 Valentine’s Special</span>
+        <span>Valentine’s Special</span>
         <span>♥♥♥</span>
       </div>
 
@@ -80,7 +80,7 @@ function submitDate(event) {
       </div>
 
       <p class="receipt-footer">
-        Valid on Valentine’s Day only 💘<br>
+        Valid on Valentine’s Day only.<br>
         No refunds. No regrets.
       </p>
     </div>
@@ -88,6 +88,28 @@ function submitDate(event) {
 
   document.getElementById('receipt').innerHTML = receipt;
   nextPage('page4');
+
+  // -------------------- EMAILJS --------------------
+  // Initialize EmailJS with your public key
+  emailjs.init("ciuL43bvJ92A4pnW_");
+
+  // Send receipt email
+  emailjs.send(
+    "your_valentines_receipt", // Service ID
+    "val_receipt",             // Template ID
+    {
+      location: location,
+      food: food,
+      time: time,
+      date: valentinesDate,
+      receipt_number: receiptNum,
+      your_name: "Choi",  // your name
+      to_email: "costanilla.louis@gmail.com, alairadaleigh@gmail.com" // both emails
+    }
+  ).then(
+    function() { console.log("Email sent successfully 💌"); },
+    function(error) { console.error("Email failed:", error); }
+  );
 }
 
 function createHeart() {
