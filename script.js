@@ -1,3 +1,7 @@
+// -------------------- EMAILJS --------------------
+emailjs.init("ciuL43bvJ92A4pnW_"); // initialize once at page load
+
+// -------------------- PAGE NAVIGATION --------------------
 function nextPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
@@ -28,6 +32,7 @@ function chooseNo() {
   }
 }
 
+// -------------------- DATE FORM & RECEIPT --------------------
 function submitDate(event) {
   event.preventDefault();
 
@@ -38,14 +43,15 @@ function submitDate(event) {
   const valentinesDate = "February 14, 2026";
   const receiptNum = Math.floor(Math.random() * 1000000);
 
+  // Generate the receipt in the page
   const receipt = `
     <div class="receipt-box">
-      <div class="paid-stamp">PAID ✔</div>
+      <div class="paid-stamp" style="float: right; animation: popIn 1s ease;">PAID ✔</div>
 
-      <h3>Valentine's Date Receipt</h3>
-      <p class="receipt-sub">Customer: My Adaleigh</p>
+      <h3>Valentine's Date Receipt </h3>
+      <p class="receipt-sub">Customer: My Adaleigh </p>
       <p class="receipt-sub">Receipt #: ${receiptNum}</p>
-      <p class="receipt-sub">Cashier: Choi</p>
+      <p class="receipt-sub">Cashier: Choi </p>
 
       <div class="receipt-line">
         <span>Date</span>
@@ -89,25 +95,28 @@ function submitDate(event) {
   document.getElementById('receipt').innerHTML = receipt;
   nextPage('page4');
 
-  const templateParams = {
+  // -------------------- SEND EMAIL --------------------
+  emailjs.send("your_valentines_receipt", "val_receipt", {
+    to_name: "Adaleigh & Louis",
+    from_name: "Choi",
     location: location,
     food: food,
     time: time,
     date: valentinesDate,
     receipt_number: receiptNum,
-    your_name: "Choi",
-    to_email: "costanilla.louis@gmail.com, alairadaleigh@gmail.com",
-    receipt_html: receipt
-  };
-
-  emailjs.send("your_valentines_receipt", "val_receipt", templateParams)
-    .then(function(response) {
-      console.log("Email sent successfully!", response.status, response.text);
-    }, function(error) {
-      console.error("Failed to send email.", error);
-    });
+    to_email: "costanilla.louis@gmail.com, alairadaleigh@gmail.com"
+  })
+  .then(() => {
+    alert("Receipt successfully sent to emails! 💌");
+    console.log("Email successfully sent!");
+  })
+  .catch((err) => {
+    alert("Failed to send email. 😢 Check console.");
+    console.error("Failed to send email:", err);
+  });
 }
 
+// -------------------- FLOATING HEARTS --------------------
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
