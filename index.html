@@ -5,27 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine's Surprise</title>
 <link rel="stylesheet" href="style.css">
+
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+   (function(){
+      emailjs.init("ciuL43bvJ92A4pnW_");
+   })();
+</script>
+
 </head>
 <body>
 
 
 <div class="page active" id="page1">
   <h1>Happy Valentine's Day My Ading!</h1>
-  <img src="valimtyms.jpeg" 
-     alt="Mixed Flowers" class="valentine-photo">
-  <p> </p>
+  <img src="valimtyms.jpeg" alt="Mixed Flowers" class="valentine-photo">
+  <p></p>
   <button onclick="nextPage('page2')">Next</button>
 </div>
 
-
+<!-- Page 2: Poem & Choice -->
 <div class="page" id="page2">
   <h1>Will you be my Valentine?</h1>
   <p id="poem">
-   i’ve carried the weight of empty days<br>
+    i’ve carried the weight of empty days<br>
     waiting for a heart like yours <br>
     to make them lighter <br>
     let me keep february warm <br>
-    with you, my dearst adaleigh <br>
+    with you, my dearest Adaleigh <br>
     will you be my valentine <br>
   </p>
   <div>
@@ -64,7 +72,6 @@
   </form>
 </div>
 
-
 <div class="page" id="page4">
   <h1>Here's your receipt</h1>
   <h2>(Keep a screenshot for reference)</h2>
@@ -72,5 +79,6 @@
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
