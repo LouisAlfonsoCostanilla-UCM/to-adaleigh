@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Baloo 2', cursive;
+  background: pink url('https://i.pinimg.com/originals/3e/4c/8a/3e4c8a45b39e0ff8a54f6579984b5d93.png') repeat;
+  background-size: 120px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  transition: background 1s;
+}
+
+.page {
+  display: none;
+  padding: 40px 20px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  max-width: 700px;
+  width: 90%;
+  background: rgba(255, 192, 203, 0.15);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px #ff69b4;
+  margin-bottom: 20px;
+  animation: popIn 1s ease forwards;
+}
+
+.valentine-photo {
+  width: 250px;
+  height: auto;
+  border-radius: 20px;        
+  border: 4px solid #ff6b81;   
+  box-shadow: 0 4px 15px rgba(255,107,129,0.5);
+  display: block;
+  margin: 20px auto;
+  transition: transform 0.3s;
+  animation: float 4s ease-in-out infinite alternate;
+}
+
+.valentine-photo:hover {
+  transform: scale(1.05);      
+}
+
+.valentine-photo:hover {
+  transform: scale(1.05);
+}
+
+button, select {
+  background: linear-gradient(45deg, #ff69b4, #ff1493);
+  border: none;
+  padding: 12px 28px;
+  font-size: 18px;
+  margin: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
+  transition: all 0.3s ease;
+}
+
+button:hover, select:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.8);
+}
+
+select { color: #f8f6f7; }
+select option { color: #ff1493; background: white; }
+
+#message {
+  margin-top: 25px;
+  font-size: 24px;
+  color: #fff;
+  animation: fadeIn 1s ease forwards;
+}
+
+form label {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #ff1493;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.heart {
+  position: fixed;
+  font-size: 25px;
+  pointer-events: none;
+  animation: heartFloat 5s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes heartFloat {
+  0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-50px) scale(1) rotate(360deg); opacity: 0; }
+}
+
+.receipt-box {
+  background: #fff;
+  color: #333;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 350px;
+  margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.receipt-box h3 {
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+  color: #ff1493;
+}
+
+.receipt-sub {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: #777;
+}
+
+.receipt-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.receipt-line.total {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ff1493;
+}
+
+.receipt-box hr {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 15px 0;
+}
+
+.receipt-footer {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+}
+
+.paid-stamp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  color: #090808;
+  font-weight: bold;
+  transform: rotate(-15deg);
+  opacity: 0;
+  animation: stampIn 0.6s forwards;
+}
+
+@keyframes stampIn {
+  0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+  70% { transform: scale(1.2) rotate(-15deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-15deg); opacity: 1; }
+}

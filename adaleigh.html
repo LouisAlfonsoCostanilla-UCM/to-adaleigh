@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Surprise</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="page active" id="page1">
+  <h1>Happy Valentine's Day My Ading!</h1>
+  <img src="valimtyms.jpeg" 
+     alt="Mixed Flowers" class="valentine-photo">
+  <p> </p>
+  <button onclick="nextPage('page2')">Next</button>
+</div>
+
+
+<div class="page" id="page2">
+  <h1>Will you be my Valentine?</h1>
+  <p id="poem">
+   i’ve carried the weight of empty days<br>
+    waiting for a heart like yours <br>
+    to make them lighter <br>
+    let me keep february warm <br>
+    with you, my dearst adaleigh <br>
+    will you be my valentine <br>
+  </p>
+  <div>
+    <button onclick="chooseYes()">YES</button>
+    <button onclick="chooseNo()">NO</button>
+  </div>
+  <div id="message"></div>
+</div>
+
+
+<div class="page" id="page3">
+  <h1>Alright, what are we doing? 💖</h1>
+  <form id="dateForm" onsubmit="submitDate(event)">
+    <label for="location">Location:</label>
+    <select id="location" required>
+      <option value="Ayala CBP">Ayala CBP</option>
+      <option value="SM Seaside">SM Seaside</option>
+      <option value="Ayala Central Bloc">Ayala Central Bloc</option>
+      <option value="Busay TOPS">Busay TOPS</option>
+    </select>
+
+    <label for="food">Food to Eat:</label>
+    <select id="food" required>
+      <option value="Fancy Dining">Fancy Dining</option>
+      <option value="Fastfood">Fastfood</option>
+      <option value="Just Snacking">Just Snacking</option>
+    </select>
+
+    <label for="time">Time:</label>
+    <select id="time" required>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+<div class="page" id="page4">
+  <h1>Here's your receipt</h1>
+  <h2>(Keep a screenshot for reference)</h2>
+  <div id="receipt"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
